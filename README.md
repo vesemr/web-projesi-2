@@ -1,2 +1,2 @@
 # web-projesi
-Web Teknolojileri Dersi Pprojesi
+Web Teknolojileri Dersi Projesi
