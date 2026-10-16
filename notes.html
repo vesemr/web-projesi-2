@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notlar - Kişisel Yöneticim</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Yapılacaklar</a>
+        <a href="notes.html" class="active">Notlar</a>
+        <!-- YENİ: Tema Butonu -->
+        <button id="theme-toggle">🌙</button>
+    </nav>
+
+    <main class="container">
+        
+        <!-- Sol Taraf: Not Ekleme ve Yedekleme Kartı -->
+        <section class="section-card form-card">
+            <h2>Yeni Not</h2>
+            <div class="input-area">
+                <input type="text" id="note-title" placeholder="Not Başlığı">
+                <textarea id="note-content" placeholder="Notunuzu buraya yazın..." rows="6"></textarea>
+                
+                <select id="note-priority">
+                    <option value="low">Düşük Öncelik (Yeşil)</option>
+                    <option value="medium" selected>Orta Öncelik (Sarı)</option>
+                    <option value="high">Yüksek Öncelik (Kırmızı)</option>
+                </select>
+
+                <button id="add-note-btn">Notu Kaydet</button>
+            </div>
+
+            <!-- YENİ: YEDEKLEME ALANI -->
+            <div style="margin-top: 30px; border-top: 1px dashed #ccc; padding-top: 15px;">
+                <h3 style="font-size: 16px; margin-bottom: 10px; color: #34495e;">Veri Yönetimi</h3>
+                <div style="display: flex; gap: 10px;">
+                    <button id="export-btn" style="background-color: #27ae60; margin-top:0; flex:1; font-size: 13px; padding: 8px;">Yedek İndir</button>
+                    
+                    <!-- Gizli dosya seçici input -->
+                    <input type="file" id="import-file" accept=".json" style="display: none;">
+                    <button id="import-btn" style="background-color: #8e44ad; margin-top:0; flex:1; font-size: 13px; padding: 8px;">Yedek Yükle</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sağ Taraf: Not Listesi Kartı -->
+        <section class="section-card list-card">
+            <h2>Kişisel Notlarım</h2>
+            
+            <!-- YENİ: ARAMA KUTUSU -->
+            <div class="input-area" style="margin-bottom: 20px;">
+                <input type="text" id="search-note" placeholder="Notlarda ara...">
+            </div>
+
+            <div id="notes-list" class="list-container">
+                <!-- JS elemanları buraya ekleyecek -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- YENİ: SİLME ONAY MODALI -->
+    <div id="delete-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h3>Emin misiniz?</h3>
+            <p>Bu notu silmek istediğinize emin misiniz? Bu işlem geri alınamaz.</p>
+            <div class="modal-buttons">
+                <button id="modal-cancel-btn" class="cancel-btn">Vazgeç</button>
+                <button id="modal-confirm-btn" class="confirm-btn">Evet, Sil</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="toast.js"></script>
+    <script src="theme.js"></script> 
+    <script src="notes.js"></script>
+</body>
+</html>

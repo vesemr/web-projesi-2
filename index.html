@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yapılacaklar - Kişisel Yöneticim</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Üst Menü -->
+    <nav>
+        <a href="index.html" class="active">Yapılacaklar</a>
+        <a href="notes.html">Notlar</a>
+        <!-- Tema Butonu -->
+        <button id="theme-toggle">🌙</button>
+    </nav>
+
+    <main class="container">
+        
+        <!-- Sol Taraf: Görev Ekleme ve Yedekleme Kartı -->
+        <section class="section-card form-card">
+            <h2>Yeni Görev</h2>
+            <div class="input-area">
+                <input type="text" id="todo-input" placeholder="Ne yapmak istiyorsun?">
+                
+                <select id="todo-priority">
+                    <option value="low">Düşük Öncelik (Yeşil)</option>
+                    <option value="medium" selected>Orta Öncelik (Sarı)</option>
+                    <option value="high">Yüksek Öncelik (Kırmızı)</option>
+                </select>
+
+                <button id="add-todo-btn">Listeye Ekle</button>
+            </div>
+
+            <!-- YENİ: YEDEKLEME ALANI -->
+            <div style="margin-top: 30px; border-top: 1px dashed #ccc; padding-top: 15px;">
+                <h3 style="font-size: 16px; margin-bottom: 10px; color: #34495e;">Veri Yönetimi</h3>
+                <div style="display: flex; gap: 10px;">
+                    <button id="export-btn" style="background-color: #27ae60; margin-top:0; flex:1; font-size: 13px; padding: 8px;">Yedek İndir</button>
+                    
+                    <!-- Gizli dosya seçici input -->
+                    <input type="file" id="import-file" accept=".json" style="display: none;">
+                    <button id="import-btn" style="background-color: #8e44ad; margin-top:0; flex:1; font-size: 13px; padding: 8px;">Yedek Yükle</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sağ Taraf: Görev Listesi Kartı -->
+        <section class="section-card list-card">
+            <h2>Yapılacaklar Listesi</h2>
+            
+            <!-- İlerleme Çubuğu -->
+            <div class="progress-container">
+                <div class="progress-info">
+                    <span>İlerleme Durumu</span>
+                    <span id="progress-text">%0</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="progress-fill"></div>
+                </div>
+            </div>
+
+            <!-- Filtre Butonları -->
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">Tümü</button>
+                <button class="filter-btn" data-filter="ongoing">Devam Edenler</button>
+                <button class="filter-btn" data-filter="completed">Tamamlananlar</button>
+            </div>
+
+            <!-- Liste Elemanları -->
+            <ul id="todo-list" class="list-container"></ul>
+        </section>
+
+    </main>
+
+    <!-- YENİ: SİLME ONAY MODALI -->
+    <div id="delete-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h3>Emin misiniz?</h3>
+            <p>Bu görevi silmek istediğinize emin misiniz? Bu işlem geri alınamaz.</p>
+            <div class="modal-buttons">
+                <button id="modal-cancel-btn" class="cancel-btn">Vazgeç</button>
+                <button id="modal-confirm-btn" class="confirm-btn">Evet, Sil</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ortak dosyalar önce yüklenir -->
+    <script src="toast.js"></script>
+    <script src="theme.js"></script> 
+    <!-- Bu sayfanın kodları en son yüklenir -->
+    <script src="todo.js"></script> 
+</body>
+</html>
